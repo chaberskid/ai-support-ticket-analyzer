@@ -47,7 +47,7 @@
 ## 🚀 Getting Started
 
 ```bash
-git clone https://github.com/YOURNAME/ai-support-ticket-analyzer.git
+git clone https://github.com/chaberskid/ai-support-ticket-analyzer.git
 cd ai-support-ticket-analyzer
 npm install
 npm run dev
