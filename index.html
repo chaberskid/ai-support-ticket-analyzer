@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Support Ticket Analyzer</title>
+    <meta name="description" content="AI Support Ticket Analyzer - Intelligent incident triage and root-cause diagnosis." />
+    <meta property="og:title" content="AI Support Ticket Analyzer" />
+    <meta property="og:description" content="AI Support Ticket Analyzer - Intelligent incident triage and root-cause diagnosis." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="header-container">
+        <a href="/" class="brand-wrapper" aria-label="AI Support Ticket Analyzer Home">
+          <img
+            src="/assets/brand/logo.png"
+            alt="AI Support Ticket Analyzer Logo"
+            class="brand-logo-img"
+          />
+          <span class="brand-subtitle-text">Automated Incident Triage &amp; Root-Cause Diagnosis</span>
+        </a>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <div class="grid-layout">
+        <section class="card" aria-labelledby="form-heading">
+          <h2 id="form-heading" class="card-title">Submit IT Support Ticket</h2>
+          <p class="card-desc">Enter the incident description or select a test scenario below to analyze.</p>
+
+          <div class="quick-samples-section">
+            <div class="quick-samples-label">Quick Test Scenarios</div>
+            <div class="sample-buttons-grid">
+              <button type="button" class="sample-chip" data-sample="vpn">🌐 VPN &amp; DNS Issue</button>
+              <button type="button" class="sample-chip" data-sample="bsod">💻 Blue Screen (BSOD)</button>
+              <button type="button" class="sample-chip" data-sample="lockout">🔒 Account Lockout</button>
+              <button type="button" class="sample-chip" data-sample="printer">🖨️ Printer Offline</button>
+            </div>
+          </div>
+
+          <form id="ticket-form" novalidate>
+            <div class="form-group">
+              <label for="ticket-description" class="form-label">
+                <span>Problem Description</span>
+                <span id="char-counter" class="char-counter">0 characters</span>
+              </label>
+              <textarea
+                id="ticket-description"
+                name="description"
+                class="ticket-textarea"
+                placeholder="Describe the IT problem in detail (e.g. error messages, what hardware or software is involved, when it started, and steps already attempted)..."
+                required
+                rows="6"
+              ></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" id="submit-btn" class="btn-primary">
+                <span id="submit-spinner" class="spinner" style="display: none;"></span>
+                <span id="submit-text">Analyze Ticket</span>
+              </button>
+              <button type="button" id="clear-btn" class="btn-secondary">Clear</button>
+            </div>
+          </form>
+
+          <div id="alert-banner" class="alert-banner" role="alert" aria-live="polite">
+            <span class="alert-icon">ℹ️</span>
+            <span id="alert-text"></span>
+          </div>
+        </section>
+
+        <section class="card results-card" aria-labelledby="results-heading">
+          <h2 id="results-heading" class="card-title">Structured Diagnosis</h2>
+          <p class="card-desc">Real-time classification, root causes, and recommended troubleshooting steps.</p>
+
+          <div id="empty-state" class="empty-state">
+            <div class="empty-state-icon">📋</div>
+            <h3>No Ticket Analyzed Yet</h3>
+            <p>Type an IT support issue or select a test scenario, then click <strong>Analyze Ticket</strong>.</p>
+          </div>
+
+          <div id="loading-skeleton" class="loading-skeleton" aria-hidden="true">
+            <div class="skeleton-bar" style="width: 40%;"></div>
+            <div class="skeleton-bar" style="width: 100%; height: 28px;"></div>
+            <div class="skeleton-bar" style="width: 90%;"></div>
+            <div class="skeleton-bar" style="width: 75%;"></div>
+            <div class="skeleton-bar" style="width: 85%;"></div>
+            <div class="skeleton-bar" style="width: 60%;"></div>
+          </div>
+
+          <div id="diagnosis-container" class="diagnosis-container">
+            <div class="diagnosis-badges">
+              <span id="badge-category" class="badge badge-category">Category</span>
+              <span id="badge-priority" class="badge badge-priority-medium">Priority</span>
+            </div>
+
+            <div id="escalation-banner" class="escalation-banner standard">
+              <span>⚠️</span>
+              <span id="escalation-text">Standard Resolution</span>
+            </div>
+
+            <div class="detail-block">
+              <div class="detail-block-title">Summary</div>
+              <p id="summary-text" class="detail-summary-text"></p>
+            </div>
+
+            <div class="detail-block">
+              <div class="detail-block-title">Possible Causes</div>
+              <ul id="causes-list" class="causes-list"></ul>
+            </div>
+
+            <div class="detail-block">
+              <div class="detail-block-title">Recommended Troubleshooting Steps</div>
+              <ol id="steps-list" class="steps-list"></ol>
+            </div>
+
+            <details class="json-viewer-details">
+              <summary class="json-summary">View Raw JSON Payload</summary>
+              <pre class="json-code-block"><code id="raw-json-display"></code></pre>
+            </details>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="app-footer">
+      <div class="footer-content">
+        <span class="footer-brand-title">AI Support Ticket Analyzer</span>
+        <span class="footer-separator">&bull;</span>
+        <p class="footer-tagline">&copy; 2026 Automated incident triage &amp; diagnosis.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/app.js"></script>
+  </body>
+</html>
